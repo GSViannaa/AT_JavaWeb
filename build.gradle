@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'com.AT_JavaWebTest'
+version '1.0'
+
+sourceCompatibility = '21'
+
+repositories {
+    mavenCentral()
+}
+tasks.named('clean') {
+    doFirst {
+        delete fileTree(dir: "$buildDir/test-results", include: '**/*')
+    }
+}
+dependencies {
+    implementation 'io.javalin:javalin:6.6.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.2'
+    implementation 'org.slf4j:slf4j-simple:2.0.16'
+    implementation("com.google.code.gson:gson:2.13.1")
+    implementation("org.projectlombok:lombok:1.18.38")
+
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'io.rest-assured:rest-assured:5.4.0'
+}
+
+application {
+    mainClass = 'com.AT_JavaWebTest.App'
+}
+
+test {
+    useJUnitPlatform()
+}
