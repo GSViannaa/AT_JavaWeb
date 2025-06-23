@@ -1,0 +1,18 @@
+### Teste POST /echo
+POST http://localhost:7000/echo
+Content-Type: application/json
+
+{
+  "mensagem": "Hello world"
+}
+
+
+### POST /usuarios - cadastrar novo usuário
+POST http://localhost:7000/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Gabriel",
+  "email": "gabriel@email.com",
+  "idade": 25
+}
